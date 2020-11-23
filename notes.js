@@ -31,8 +31,16 @@ const removeNote = (title) => {
     console.log(chalk.green(`${title} successfully removed!`));
   } else {
     console.log(chalk.red(`${title} does not exist.`));
-  }
-  
+  } 
+}
+
+const listNotes = () => {
+  const notes = loadNotes();
+
+  console.log(chalk.bold.underline.blue('Your notes:'))
+  notes.forEach((note, index) => {
+    console.log(chalk.blue(`${index+1}. ${note.title}`));
+  });
 }
 
 const loadNotes = () => {
@@ -54,4 +62,5 @@ module.exports = {
   getNotes: getNotes,
   addNote: addNote,
   removeNote: removeNote,
+  listNotes: listNotes,
 };
