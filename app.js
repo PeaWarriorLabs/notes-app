@@ -22,9 +22,7 @@ yargs.command({
     }
   },
   handler: function({ title, body }){
-    notes.addNote(title, body)
-    // console.log(chalk.blue('Title: ' + params.title));
-    // console.log(chalk.blue('Body: ' + params.body));
+    notes.addNote(title, body);
   }
 });
 
@@ -32,8 +30,15 @@ yargs.command({
 yargs.command({
   command: 'remove',
   describe: 'Remove a note',
-  handler: function() {
-    console.log(chalk.blue('Removing note'));
+  builder: {
+    title: {
+      describe: 'Note title',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+  handler: function({ title }) {
+    chalk.red(notes.removeNote(title));
   }
 });
 
