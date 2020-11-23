@@ -1,7 +1,5 @@
 // in order to use a module, you must require it
-const validator = require('validator');
 const getNotes = require('./notes');
+const chalk = require('chalk');
 
-const msg = getNotes();
-
-console.log(msg);
+console.log(chalk.green('Success!'));
